@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart</title>
+	<link rel="stylesheet" type="text/css" href="../css/cartstyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ url_for('home')}}" style="color:black">Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ url_for('logout')}}"  style="color:black">Log out</a>
+                </li>
+            </ul>
+        </div>   
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+<div class="container">
+	<h1>Shopping Cart</h1>
+	<div class="cart">
+		<div class="products">
+
+            {% set count = [] %}
+            {% set price= {'total': 0} %} 
+            {% for item in mc %}
+			<div class="product">
+                {% if item.Type=='Mattress' %}
+                {% if item.ProductName=='Mattress' %}
+				<img src={{ url_for('static', filename='a.png') }}>
+                {% endif %}
+                {% if item.ProductName=='Foam Mattress' %}
+				<img src={{ url_for('static', filename='b.png') }}>
+                {% endif %}
+                {% if item.ProductName=='Latex Mattress' %}
+				<img src={{ url_for('static', filename='c.png') }}>
+                {% endif %}
+                {% if item.ProductName=='Gel Mattress' %}
+				<img src={{ url_for('static', filename='d.png') }}>
+                {% endif %}
+                {% endif %}
+                {% if item.Type=='Bucket' %}
+                {% if item.ProductName=='Milton Bucket' %}
+				<img src={{ url_for('static', filename='b1.jpeg') }}>
+                {% endif %}
+                {% if item.ProductName=='Nayasa Bucket' %}
+				<img src={{ url_for('static', filename='b2.jpeg') }}>
+                {% endif %}
+                {% if item.ProductName=='Cello Bucket' %}
+				<img src={{ url_for('static', filename='b3.jpeg') }}>
+                {% endif %}
+                {% if item.ProductName=='Fuscia Bucket' %}
+				<img src={{ url_for('static', filename='b4.jpeg') }}>
+                {% endif %}
+                {% endif %}
+                {% if item.Type=='Medicine' %}
+                {% if item.ProductName=='Crocin' %}
+				<img src={{ url_for('static', filename='m1.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='Cecip' %}
+				<img src={{ url_for('static', filename='m2.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='Paracare' %}
+				<img src={{ url_for('static', filename='m3.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='Eno' %}
+				<img src={{ url_for('static', filename='m4.jpg') }}>
+                {% endif %}
+                {% endif %}
+                {% if item.Type=='Groceries' %}
+                {% if item.ProductName=='Dairy Milk' %}
+				<img src={{ url_for('static', filename='g1.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='Ketchup' %}
+				<img src={{ url_for('static', filename='g2.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='Amul Butter' %}
+				<img src={{ url_for('static', filename='g3.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='Ramen' %}
+				<img src={{ url_for('static', filename='g4.jpg') }}>
+                {% endif %}
+                {% endif %}
+                {% if item.Type=='Book' %}
+                {% if item.ProductName=='The Kite Runner' %}
+				<img src={{ url_for('static', filename='book11.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='Digital Fortress' %}
+				<img src={{ url_for('static', filename='book2.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='The Alchemist' %}
+				<img src={{ url_for('static', filename='book3.jpg') }}>
+                {% endif %}
+                {% if item.ProductName=='The Godfather' %}
+				<img src={{ url_for('static', filename='book4.jpg') }}>
+                {% endif %}
+                {% endif %}
+                
+				<div class="product-info">
+					<h4 class="product-name">Name : {{ item.ProductName }} </h4>
+                    {% set __ = count.append(1) %}
+                    <h4 class="vendor-name">Vendor Name : {{ item.VendorName }} </h4>
+					<h4 class="product-price">Price :{{ item.Price }}</h4>
+                    {% set number = item.Price[2:]|int %}
+                    {% if price.update({'total': price.total + number}) %}{% endif %} 
+					<h4 class="product-specs">Specifications :{{ item.Specifications }}</h4>
+                    <form method="POST">
+					<button input type="submit" name="submit" value={{item.id}} class="remove_it">Remove</button> 
+                    </form>  
+				</div>
+			</div>
+            {% endfor %}
+			</div>
+		</div>
+		<div class="cart-total">
+			<p>
+				<span>Total Price</span>
+				<span>Rs {{price.total}}</span>
+			</p>
+			<p>
+				<span>Number of Items</span>
+				<span>{{ count|length }}</span>
+			</p>
+            <form method="POST">
+			<button input type="submit" name="submit" value="order" class="Confirm">Confirm and Order</button>
+            </form>
+		</div>
+	</div>
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+</div>
+</body>
+
+<style>
+   .navbar{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+}
+*{
+	margin: 0;
+	padding: -10;
+	box-sizing: border-box;
+}
+
+.container{
+	max-width: 1200px;
+	margin: 0 auto;
+    top: 50px;
+}
+
+.container > h1{
+	padding: 55px 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.cart{
+	display: flex;
+}
+
+.products{
+	flex: 0.75;
+}
+
+.product{
+	display: flex;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+
+.product > img{
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+}
+
+.product > img:hover{
+	transform: scale(1.04);
+}
+
+.product-info{
+	padding: 20px;
+	width: 100%;
+	position: relative;
+}
+
+.product-name,.vendor-name, .product-price, .product-specs{
+	margin-bottom: 5px;
+    margin-left: 45px;
+    margin-top: 8px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.remove_it{
+    position: relative;
+    width: 130px;
+    height: 40px;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 15px;
+    left:525px;
+    top:-100px;
+    background-color:#7184E7AB;
+    border-radius: 5px;
+    color: black;
+}
+.remove_it:hover{
+    border:1px solid #000000;
+    transition: .5s;
+    background-color: #fcfcfc;
+    color:#000000;
+}
+
+
+.product-quantity > input{
+	width: 40px;
+	padding: 5px;
+	text-align: center;
+}
+
+.fa{
+	margin-right: 5px;
+}
+
+.cart-total{
+	flex: 0.25;
+	margin-left: 20px;
+	padding: 20px;
+	height: 240px;
+	border-radius: 5px;
+}
+
+.cart-total p{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	font-size: 20px;
+}
+
+.cart-total a{
+	display: block;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	background-color: rgb(0, 0, 0);
+	color: white;
+	text-decoration: none;
+    border-radius: 5px;
+}
+
+.cart-total a:hover{
+    border: 1px solid rgba(0, 0, 0, 0.72);
+	background-color: rgba(255, 255, 255, 0.827);
+}
+
+@media screen and (max-width: 700px){
+	.remove{
+		display: none;
+	}
+	.product{
+		height: 150px;
+	}
+	.product > img{
+		height: 150px;
+		width: 200px;
+	}
+	.product-name, .product-price, .product-offer{
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 900px){
+	.cart{
+		flex-direction: column;
+	}
+	.cart-total{
+		margin-left: 0;
+		margin-bottom: 20px;
+	}
+}
+
+@media screen and (max-width: 1220px){
+	.container{
+		max-width: 95%;
+	}
+
+
+}
+
+.Confirm{
+    position: relative;
+    width: 100%;
+    height: 40px;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 15px;
+    background-color:#7184E7AB;
+    border-radius: 5px;
+    color: black;
+}
+.Confirm:hover{
+    border:1px solid #000000;
+    transition: .5s;
+    background-color: #fcfcfc;
+    color:#000000;
+}
+</style>
+</html>
