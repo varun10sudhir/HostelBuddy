@@ -12,7 +12,7 @@
 
 </p>
 
-## Requirement Analysis:
+## Requirements:
 Customer
    - Student Credentials
    - Hostel Block of Student
@@ -33,7 +33,7 @@ Back-emd:
 - Flask
 - SQLAlchemy
    
-## Description :
+## A short Description :
   
 Our project is Hostel Buddy, a one stop destination to all your hostel needs.
 Now we know, settling for the first time in a hostel wasn't the easiest job.
@@ -41,7 +41,7 @@ It has been noted that often the prices tend to go very high inside campuses wit
 Enter Hostel Buddy.
 The main aim is to conveniently provide the students with utilities at ideal prices. The purchasing process will be seamless and hasslefree.
 
-## Statistics:
+## Few statistics:
 
 - Most of the universities often sell products at a 43% higher cost than what is sold outside the campus.
 - More than 90% of people buy exaggerated prices for items like mattresses due to inconvenience posed by logistics.
@@ -54,5 +54,5 @@ The main aim is to conveniently provide the students with utilities at ideal pri
 - <a href = "https://github.com/taniyeahh7" > Taniya Ahmed</a> 
 - <a href = "https://github.com/abhi-shek-09" > Abhishek Murthy</a> 
   
-## Made with :heart: by ISTE-VIT Vellore
+## Made with :heart: by Team 456
  
