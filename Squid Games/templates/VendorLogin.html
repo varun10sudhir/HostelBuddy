@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <title>
+          Log in!
+      </title>
+   </head>
+<body>
+    <div class="container">
+        <a href="/" target=_blank><img align ="right" width ="250" height="250" src={{ url_for('static', filename='hostelbuddy.png') }} ></a
+        <br>
+        <br>
+        <br>
+
+        <h1>Log in!</h1>
+        <form method="POST" class="form-register" style="color:black">
+            {{form.hidden_tag()}}
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            {{form.vendorname.label()}}
+            {{form.vendorname(class="form-control",placeholder="Vendor Name")}}
+            <br>
+            {{form.Password.label()}}
+            {{form.Password(class="form-control",placeholder="Password")}}
+            <br>
+            {{form.submit(class="btn btn-lg btn-block btn-primary")}}
+            <style>
+                body {
+                background-color: white;
+                color:black
+                }
+                a{
+                    color:black;
+                    text-decoration: none;
+                    padding: 1rem;} 
+                a:hover{
+                    color: rgb(250, 186, 49);
+                    } 
+                #logo{
+                    margin-right: 20%;
+                    color: rgb(252, 250, 250);
+                    font-size: 2rem;
+                } 
+                #logoz{
+                    color: rgb(75, 179, 6);
+                }
+                .btn{
+                    background-color: rgb(75, 179, 6);
+                    border:none;
+                    color: white;
+                    border-radius: 30px;
+                    margin-bottom: 2.5rem;
+                }
+                .btn:hover{
+                    background-color: black;
+                }
+                .btn{
+                    width: 8rem;
+                    height: 2.5rem;
+                }
+                #btn_login {
+                    transform: translateY(0.6rem);
+                }
+
+                #register {
+                    background-color:#2691d9;
+                }
+
+                #hideMe {
+                    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+                    animation: cssAnimation 0s ease-in 5s forwards;
+                    -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+
+                }
+                </style>
+</html>

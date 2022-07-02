@@ -1,0 +1,71 @@
+body{
+    background-color: rgba(255, 255, 255, 0.845);
+}
+#rectangle{
+    position: absolute;
+    width: 1496.167px;
+    height: 463.5px;
+    left: -134px;
+    top: -230px;
+    background: #2A2C5D;
+    transform: rotate(-17deg);
+}
+
+img{
+    position: absolute;
+    width: 325px;
+    height: 325px;
+    left: 1006px;
+    top: 75px;
+}
+
+.motto{
+    position: absolute;
+    width: 600px;
+    height: 225px;
+    left: 1090px;
+    top: 400px;
+    font-family: 'Comic Neue';
+    font-size: 44px;
+    line-height: 55px;
+}
+
+#deets{
+    position: absolute;
+    width: 189px;
+    height: 40px;
+    left: 5px;
+    top: 600px;
+
+    font-family: 'Comic Neue';
+    font-style: normal;
+    font-size: 16px;
+    line-height: 17px;
+
+    color: #000000;
+}
+
+.gh{
+    position: absolute;
+    width: 43px;
+    height: 40px;
+    left: 1306px;
+    top: 590px;
+}
+
+.ig{
+    position: absolute;
+    width: 43px;
+    height: 40px;
+    left: 1236px;
+    top: 590px;
+}
+
+.in{
+    position: absolute;
+    width: 43px;
+    height: 40px;
+    left: 1166px;
+    top: 590px;
+}
+
